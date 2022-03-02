@@ -33,7 +33,7 @@ public class InsertServlet extends HttpServlet {
 			PrintWriter pw = response.getWriter();
 			try{
 				Class.forName("com.mysql.jdbc.Driver");
-				String url = "jdbc:mysql://13.125.251.30:3307/db01?useSSL=false&characterEncoding=UTF-8";
+				String url="jdbc:mysql://13.125.251.30:3307/db01?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC";
 				con = DriverManager.getConnection(url, "lion", "1234");
 				String name_list = "select count(*) from user where id = ?";
 				pstmt = con.prepareStatement(name_list);

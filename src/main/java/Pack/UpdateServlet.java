@@ -119,7 +119,7 @@ public class UpdateServlet extends HttpServlet {
 		try{
 			// 2. 전송된 값을 db에 저장.
 			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://13.125.251.30:3307/db01";
+			String url="jdbc:mysql://13.125.251.30:3307/db01?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC";
 			con = DriverManager.getConnection(url, "lion", "1234");
 
 			/*String sql = "select * from user where idx=?";*/

@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class ListServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
+	
 	@Override
 	protected void service(HttpServletRequest resquest, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -42,7 +43,7 @@ public class ListServlet extends HttpServlet{
 				+ "text-align: center"
 				+ "}"
 				+ "#delete a {color: red;"
-				+ "</style></head><body><header><h1>user List<h1></header>"
+				+ "</style></head><body><header><h1>User List<h1></header>"
 				);
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
@@ -56,12 +57,13 @@ public class ListServlet extends HttpServlet{
 			pw.println("<div>");
 			pw.println("<table width='1200'>");
 			pw.println("<thead>");
-			pw.println("<tr>");
+			pw.println("<tr id=\"test\">");
 			pw.println("<td>아이디</td>");
 			pw.println("<td>비밀번호</td>");
 			pw.println("<td>이메일</td>");
 			pw.println("<td>전화번호</td>");
 			pw.println("<td>등록일</td>");
+			pw.println("<td>지역</td>");
 			pw.println("<td>삭제</td>");
 			pw.println("<td>수정</td>");
 			pw.println("</tr>");
@@ -81,6 +83,7 @@ public class ListServlet extends HttpServlet{
 				pw.println("<td>" + email + "</td>");
 				pw.println("<td>" + phone + "</td>");
 				pw.println("<td>" + regdate + "</td>");
+				pw.println("<td>" + region + "</td>");
 				pw.println("<td id=\"delete\"><a href='delete.do?idx=" + idx + "'>삭제</a></td>");
 				pw.println("<td><a href='update.do?idx=" + idx + "'>수정</a></td>");
 				pw.println("</tr>");
@@ -88,7 +91,10 @@ public class ListServlet extends HttpServlet{
 			pw.println("</tbody>");
 			pw.println("</table>");
 			pw.println("</div>");
-			pw.println("<a href='index.html'>메인페이지로 이동</a>");
+			pw.println("<div class=\"back\">"
+					+ "<a href='index.html'>메인페이지로 이동</a><br/>"
+					+ "</div>"
+					);
 
 		}catch(ClassNotFoundException ce){
 			System.out.println(ce.getMessage());
