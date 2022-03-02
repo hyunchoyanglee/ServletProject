@@ -46,5 +46,13 @@
 		<url-pattern>/updateok.do</url-pattern>
 	</servlet-mapping>
 	
-	
-	</web-app>
+	<servlet>
+		<servlet-name>delete</servlet-name>
+		<servlet-class>Pack.DeleteServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>delete</servlet-name>
+		<url-pattern>/delete.do</url-pattern>
+	</servlet-mapping>
+   </web-app>
