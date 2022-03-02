@@ -30,7 +30,7 @@ public class UpdateOkServlet extends HttpServlet {
 		int n=0;
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://13.125.251.30:3307/db01";
+			String url="jdbc:mysql://13.125.251.30:3307/db01?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC";
 			con = DriverManager.getConnection(url, "lion", "1234");
 			String sql = "update user set pwd=?,email=?,phone=?, region=? where idx=?";
 			pstmt = con.prepareStatement(sql);
@@ -47,7 +47,7 @@ public class UpdateOkServlet extends HttpServlet {
 			}else{
 				PrintWriter pw = resp.getWriter();
 				pw.println("<html><head></head>");
-				pw.println("<body>�떎�뙣</body>");
+				pw.println("<body>실패</body>");
 				pw.println("</heal>");
 				pw.close();
 			}
