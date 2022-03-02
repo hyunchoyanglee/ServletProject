@@ -95,7 +95,6 @@ public class ListServlet extends HttpServlet{
 					+ "<a href='index.html'>메인페이지로 이동</a><br/>"
 					+ "</div>"
 					);
-			// git test
 		}catch(ClassNotFoundException ce){
 			System.out.println(ce.getMessage());
 		}catch(SQLException se){
