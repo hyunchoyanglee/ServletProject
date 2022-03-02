@@ -45,7 +45,6 @@
 		<servlet-name>updateok</servlet-name>
 		<url-pattern>/updateok.do</url-pattern>
 	</servlet-mapping>
-	<!--양원석 merge 연습-->
 	
 	<servlet>
 		<servlet-name>delete</servlet-name>
