@@ -29,27 +29,32 @@ public class ListServlet extends HttpServlet{
 		pw.println("<style> "
 				+ "header {width: 100%; height: 100px;display: flex;justify-content: center;}"
 				+ "h1 {color: #6667AB;}"
-				+ "div {display: flex; justify-content: center;border-radius: 20px;}"
+				+ "div {display: flex; justify-content: center; border-radius: 20px;}"
 				+ "table {border-radius: 20px; text-align: center; border-collapse: collapse; margin: 25px 0;font-size: 0.9em;font-family: sans-serif;min-width: 400px;box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);}"
+				+ "#test {border-radius:20px;}"
 				+ "thead tr {border-radius: 20px;background-color: #6667AB;color: #ffffff;text-align: center;font-weight: bold;}"
-				+ "tr,td {padding: 12px 15px;}"
+				+ "tr,td {padding: 12px; 12px;}"
 				+ "tbody tr {border:none;border-bottom: 1px solid #dddddd;}"
 				+ "tbody tr:nth-of-type(even) {background-color: #f3f3f3;}"
 				+ "tbody tr:last-of-type {border-radius: 20px; border-bottom: 2px solid #6667AB;}"
 				+ "a{text-decoration:none;}"
+				+ ".back{"
+				+ "text-align: center"
+				+ "}"
 				+ "#delete a {color: red;"
-				+ "</style></head><body><header><h1>User List<h1></header>"
+				+ "</style></head><body><header><h1>user List<h1></header>"
 				);
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			String url="jdbc:mysql://13.125.251.30:3307/db01?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC";
 			con = DriverManager.getConnection(url, "lion", "1234");
-			String sql = "select * from user";
+			String sql = "select u.idx, u.id, u.pwd, u.email, u.phone, u.sysdate, r.regionNm as region from user u"
+					+ " inner join region r on u.region = r.regionPk";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 
 			pw.println("<div>");
-			pw.println("<table border='1' width='1200'>");
+			pw.println("<table width='1200'>");
 			pw.println("<thead>");
 			pw.println("<tr>");
 			pw.println("<td>아이디</td>");
@@ -69,7 +74,7 @@ public class ListServlet extends HttpServlet{
 				String email = rs.getString("email");
 				String phone = rs.getString("phone");
 				Timestamp regdate = rs.getTimestamp("sysdate");
-
+				String region = rs.getString("region");
 				pw.println("<tr>");
 				pw.println("<td>" + id + "</td>");
 				pw.println("<td>" + pwd + "</td>");

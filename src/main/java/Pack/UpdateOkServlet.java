@@ -7,12 +7,13 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class UpdateOkServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -46,7 +47,7 @@ public class UpdateOkServlet extends HttpServlet {
 			}else{
 				PrintWriter pw = resp.getWriter();
 				pw.println("<html><head></head>");
-				pw.println("<body>실패</body>");
+				pw.println("<body>�떎�뙣</body>");
 				pw.println("</heal>");
 				pw.close();
 			}
