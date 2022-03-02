@@ -56,4 +56,20 @@
 		<servlet-name>delete</servlet-name>
 		<url-pattern>/delete.do</url-pattern>
 	</servlet-mapping>
+  
+  		<servlet>
+
+		<servlet-name>list</servlet-name>
+
+		<servlet-class>Pack.ListServlet</servlet-class>
+
+	</servlet>
+
+	<servlet-mapping>
+
+		<servlet-name>list</servlet-name>
+
+		<url-pattern>/list.do</url-pattern>
+
+	</servlet-mapping>
    </web-app>
