@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 public class InsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	@SuppressWarnings("resource")
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String id = request.getParameter("id");
@@ -45,9 +46,9 @@ public class InsertServlet extends HttpServlet {
 					pw.println("<html>");
 					pw.println("<head></head>");
 					pw.println("<body>");
-					System.out.println("Áßº¹ÀÖÀ½");
+					System.out.println("ï¿½ßºï¿½ï¿½ï¿½ï¿½ï¿½");
 					pw.println ("<html><body><script>");
-					pw.println ("alert('" + id + "´Â ÀÌ¹Ì Á¸ÀçÇÏ´Â ¾ÆÀÌµðÀÔ´Ï´Ù.'); history.go(-1)</script></body></html>");
+					pw.println ("alert('" + id + "ï¿½ï¿½ ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ï¿½Ô´Ï´ï¿½.'); history.go(-1)</script></body></html>");
 					pw.println("</body>");
 					pw.println("</html>");
 					return;
@@ -79,17 +80,17 @@ public class InsertServlet extends HttpServlet {
 			pw.println("<body>");
 			if(n>0){
 				pw.println ("<html><body><script>");
-				pw.println ("alert('" + id + "´Ô! ¼º°øÀûÀ¸·Î °¡ÀÔµÇ¾ú½À´Ï´Ù.'); history.go(-2)</script></body></html>");
+				pw.println ("alert('" + id + "ï¿½ï¿½! ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ÔµÇ¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.'); history.go(-2)</script></body></html>");
 			}else{
 				pw.println ("<html><body><script>");
-				pw.println ("alert('¿À·ù·Î ÀÎÇØ °¡ÀÔ¿¡ ½ÇÆÐÇß½À´Ï´Ù.'); history.go(-2)</script></body></html>");
+				pw.println ("alert('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ô¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.'); history.go(-2)</script></body></html>");
 			}
 			pw.println("</body>");
 			pw.println("</html>");
 		}else {
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter pw = response.getWriter();
-			pw.println ("<html><head><script>alert('ºñ¹Ð¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.'); history.go(-1);</script></head></html>");
+			pw.println ("<html><head><script>alert('ï¿½ï¿½Ð¹ï¿½È£ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ ï¿½Ê½ï¿½ï¿½Ï´ï¿½.'); history.go(-1);</script></head></html>");
 		}      
 	}
 }
