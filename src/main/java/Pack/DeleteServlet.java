@@ -47,7 +47,7 @@ public class DeleteServlet extends HttpServlet{
 		}
 		if(n>0){
 			pw.println ("<html><body><script>");
-            pw.println ("alert('계정이 삭제되었습니다.');</script></body></html>");
+            pw.println ("alert('계정이 정상적으로 삭제되었습니다.');</script></body></html>");
 			response.sendRedirect("list.do");
 		}else{
 			pw.println("<html>");
