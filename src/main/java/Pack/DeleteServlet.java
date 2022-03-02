@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class DeleteServlet extends HttpServlet{
+	private static final long serialVersionUID = 1L;
+	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -25,7 +27,7 @@ public class DeleteServlet extends HttpServlet{
 		PrintWriter pw = response.getWriter();
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://13.125.251.30:3307/db01";
+			String url="jdbc:mysql://13.125.251.30:3307/db01?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC";
 			con = DriverManager.getConnection(url, "lion", "1234");
 			String sql = "delete from user where idx=?";
 			pstmt = con.prepareStatement(sql);

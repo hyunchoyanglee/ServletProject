@@ -6,7 +6,7 @@
                   http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
 	version="4.0">
 
-	<display-name>day02_servlet01</display-name>
+	<display-name>ServletProject</display-name>
 
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
@@ -46,7 +46,6 @@
 		<servlet-name>updateok</servlet-name>
 		<url-pattern>/updateok.do</url-pattern>
 	</servlet-mapping>
-	<!--양원석 merge 연습-->
 	
 	<servlet>
 		<servlet-name>delete</servlet-name>
