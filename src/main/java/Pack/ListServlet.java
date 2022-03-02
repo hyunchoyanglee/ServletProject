@@ -52,13 +52,13 @@ public class ListServlet extends HttpServlet{
 			pw.println("<table border='1' width='1200'>");
 			pw.println("<thead>");
 			pw.println("<tr>");
-			pw.println("<td>¾ÆÀÌµğ</td>");
-			pw.println("<td>ºñ¹Ğ¹øÈ£</td>");
-			pw.println("<td>ÀÌ¸ŞÀÏ</td>");
-			pw.println("<td>ÀüÈ­¹øÈ£</td>");
-			pw.println("<td>µî·ÏÀÏ</td>");
-			pw.println("<td>»èÁ¦</td>");
-			pw.println("<td>¼öÁ¤</td>");
+			pw.println("<td>ì•„ì´ë””</td>");
+			pw.println("<td>ë¹„ë°€ë²ˆí˜¸</td>");
+			pw.println("<td>ì´ë©”ì¼</td>");
+			pw.println("<td>ì „í™”ë²ˆí˜¸</td>");
+			pw.println("<td>ë“±ë¡ì¼</td>");
+			pw.println("<td>ì‚­ì œ</td>");
+			pw.println("<td>ìˆ˜ì •</td>");
 			pw.println("</tr>");
 			pw.println("</thead>");
 			pw.println("<tbody>");
@@ -76,14 +76,14 @@ public class ListServlet extends HttpServlet{
 				pw.println("<td>" + email + "</td>");
 				pw.println("<td>" + phone + "</td>");
 				pw.println("<td>" + regdate + "</td>");
-				pw.println("<td id=\"delete\"><a href='delete.do?idx=" + idx + "'>»èÁ¦</a></td>");
-				pw.println("<td><a href='update.do?idx=" + idx + "'>¼öÁ¤</a></td>");
+				pw.println("<td id=\"delete\"><a href='delete.do?idx=" + idx + "'>ì‚­ì œ</a></td>");
+				pw.println("<td><a href='update.do?idx=" + idx + "'>ìˆ˜ì •</a></td>");
 				pw.println("</tr>");
 			}
 			pw.println("</tbody>");
 			pw.println("</table>");
 			pw.println("</div>");
-			pw.println("<a href='index.html'>¸ŞÀÎÆäÀÌÁö·Î ÀÌµ¿</a>");
+			pw.println("<a href='index.html'>ë©”ì¸í˜ì´ì§€ë¡œ ì´ë™</a>");
 
 		}catch(ClassNotFoundException ce){
 			System.out.println(ce.getMessage());

@@ -18,17 +18,18 @@ public class InsertServlet extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("pwd");
 		String pwdck = request.getParameter("pwdck");
 		String email = request.getParameter("email");
 		String phone = request.getParameter("phone");
-		String region = request.getParameter("region");
 
 		if(pwd.equals(pwdck)) {
 			int n=0;
 			PreparedStatement pstmt = null;
 			Connection con = null;
+			PrintWriter pw = response.getWriter();
 			try{
 				Class.forName("com.mysql.jdbc.Driver");
 				String url = "jdbc:mysql://13.125.251.30:3307/db01?useSSL=false&characterEncoding=UTF-8";
@@ -40,25 +41,22 @@ public class InsertServlet extends HttpServlet {
 				rs.next();
 				if(rs.getInt(1) >= 1) {
 					response.setContentType("text/html;charset=UTF-8");
-					PrintWriter pw = response.getWriter();
-					System.out.println(rs.getRow()+"+"+id);
 					pw.println("<html>");
 					pw.println("<head></head>");
 					pw.println("<body>");
-					System.out.println("Áßº¹ÀÖÀ½");
+					System.out.println("ì¤‘ë³µìˆìŒ");
 					pw.println ("<html><body><script>");
-					pw.println ("alert('" + id + "´Â ÀÌ¹Ì Á¸ÀçÇÏ´Â ¾ÆÀÌµğÀÔ´Ï´Ù.'); history.go(-1)</script></body></html>");
+					pw.println ("alert('" + id + "ëŠ” ì´ë¯¸ ì¡´ì¬í•˜ëŠ” ì•„ì´ë””ì…ë‹ˆë‹¤.'); history.go(-1)</script></body></html>");
 					pw.println("</body>");
 					pw.println("</html>");
 					return;
 				}
-				String sql = "insert into user values(null,?,?,?,?,sysdate(),?)";
+				String sql = "insert into user values(null,?,?,?,?,sysdate())";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, id);
 				pstmt.setString(2, pwd);
 				pstmt.setString(3, email);
 				pstmt.setString(4, phone);
-				pstmt.setInt(5, Integer.parseInt(region));
 				n=pstmt.executeUpdate();
 			}catch(ClassNotFoundException ce){
 				System.out.println(ce.getMessage());
@@ -72,24 +70,22 @@ public class InsertServlet extends HttpServlet {
 					System.out.println(se.getMessage());
 				}
 			}
-			response.setContentType("text/html;charset=UTF-8");
-			PrintWriter pw = response.getWriter();
 			pw.println("<html>");
 			pw.println("<head></head>");
 			pw.println("<body>");
 			if(n>0){
 				pw.println ("<html><body><script>");
-				pw.println ("alert('" + id + "´Ô! ¼º°øÀûÀ¸·Î °¡ÀÔµÇ¾ú½À´Ï´Ù.'); history.go(-2)</script></body></html>");
+				pw.println ("alert('" + id + "ë‹˜! ì„±ê³µì ìœ¼ë¡œ ê°€ì…ë˜ì—ˆìŠµë‹ˆë‹¤.'); history.go(-2)</script></body></html>");
 			}else{
 				pw.println ("<html><body><script>");
-				pw.println ("alert('¿À·ù·Î ÀÎÇØ °¡ÀÔ¿¡ ½ÇÆĞÇß½À´Ï´Ù.'); history.go(-2)</script></body></html>");
+				pw.println ("alert('ì˜¤ë¥˜ë¡œ ì¸í•´ ê°€ì…ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.'); history.go(-2)</script></body></html>");
 			}
 			pw.println("</body>");
 			pw.println("</html>");
 		}else {
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter pw = response.getWriter();
-			pw.println ("<html><head><script>alert('ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.'); history.go(-1);</script></head></html>");
-		}      
+			pw.println ("<html><head><script>alert('ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.'); history.go(-1);</script></head></html>");
+		}		
 	}
 }

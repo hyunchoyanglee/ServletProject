@@ -42,12 +42,7 @@ public class UpdateOkServlet extends HttpServlet {
 			n = pstmt.executeUpdate();
 
 			if(n>0){
-				PrintWriter pw = resp.getWriter();
 				resp.sendRedirect("list.do");
-				// 수정되었다고 alert 띄워주고싶은데..ㅠㅠ
-				//pw.println ("<html><body><script>");
-				//pw.println ("alert('개인정보가 수정되었습니다.'); history.go(-2)</script></body></html>");
-				//
 			}else{
 				PrintWriter pw = resp.getWriter();
 				pw.println("<html><head></head>");
