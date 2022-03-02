@@ -6,25 +6,58 @@
                   http://xmlns.jcp.org/xml/ns/javaee/web-app_4_1.xsd"
 	version="4.1">
 
-	<display-name>WebProject</display-name>
+	<display-name>day02_servlet01</display-name>
 
 	<welcome-file-list>
-
 		<welcome-file>index.html</welcome-file>
-
 		<welcome-file>index.htm</welcome-file>
-
 		<welcome-file>index.jsp</welcome-file>
-
 		<welcome-file>default.html</welcome-file>
-
 		<welcome-file>default.htm</welcome-file>
-
 		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
 
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
 	
-		<servlet>
+	<servlet>
+		<servlet-name>update</servlet-name>
+		<servlet-class>Pack.UpdateServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>update</servlet-name>
+		<url-pattern>/update.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>updateok</servlet-name>
+		<servlet-class>Pack.UpdateOkServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>updateok</servlet-name>
+		<url-pattern>/updateok.do</url-pattern>
+	</servlet-mapping>
+	<!--양원석 merge 연습-->
+	
+	<servlet>
+		<servlet-name>delete</servlet-name>
+		<servlet-class>Pack.DeleteServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>delete</servlet-name>
+		<url-pattern>/delete.do</url-pattern>
+	</servlet-mapping>
+  
+  		<servlet>
 
 		<servlet-name>list</servlet-name>
 
@@ -39,4 +72,4 @@
 		<url-pattern>/list.do</url-pattern>
 
 	</servlet-mapping>
-</web-app>
+   </web-app>
