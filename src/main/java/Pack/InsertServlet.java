@@ -19,17 +19,18 @@ public class InsertServlet extends HttpServlet {
 	@SuppressWarnings("resource")
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("pwd");
 		String pwdck = request.getParameter("pwdck");
 		String email = request.getParameter("email");
 		String phone = request.getParameter("phone");
-		String region = request.getParameter("region");
 
 		if(pwd.equals(pwdck)) {
 			int n=0;
 			PreparedStatement pstmt = null;
 			Connection con = null;
+			PrintWriter pw = response.getWriter();
 			try{
 				Class.forName("com.mysql.jdbc.Driver");
 				String url = "jdbc:mysql://13.125.251.30:3307/db01?useSSL=false&characterEncoding=UTF-8";
@@ -41,25 +42,22 @@ public class InsertServlet extends HttpServlet {
 				rs.next();
 				if(rs.getInt(1) >= 1) {
 					response.setContentType("text/html;charset=UTF-8");
-					PrintWriter pw = response.getWriter();
-					System.out.println(rs.getRow()+"+"+id);
 					pw.println("<html>");
 					pw.println("<head></head>");
 					pw.println("<body>");
-					System.out.println("�ߺ�����");
+					System.out.println("중복있음");
 					pw.println ("<html><body><script>");
-					pw.println ("alert('" + id + "�� �̹� �����ϴ� ���̵��Դϴ�.'); history.go(-1)</script></body></html>");
+					pw.println ("alert('" + id + "는 이미 존재하는 아이디입니다.'); history.go(-1)</script></body></html>");
 					pw.println("</body>");
 					pw.println("</html>");
 					return;
 				}
-				String sql = "insert into user values(null,?,?,?,?,sysdate(),?)";
+				String sql = "insert into user values(null,?,?,?,?,sysdate())";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, id);
 				pstmt.setString(2, pwd);
 				pstmt.setString(3, email);
 				pstmt.setString(4, phone);
-				pstmt.setInt(5, Integer.parseInt(region));
 				n=pstmt.executeUpdate();
 			}catch(ClassNotFoundException ce){
 				System.out.println(ce.getMessage());
@@ -73,24 +71,22 @@ public class InsertServlet extends HttpServlet {
 					System.out.println(se.getMessage());
 				}
 			}
-			response.setContentType("text/html;charset=UTF-8");
-			PrintWriter pw = response.getWriter();
 			pw.println("<html>");
 			pw.println("<head></head>");
 			pw.println("<body>");
 			if(n>0){
 				pw.println ("<html><body><script>");
-				pw.println ("alert('" + id + "��! ���������� ���ԵǾ����ϴ�.'); history.go(-2)</script></body></html>");
+				pw.println ("alert('" + id + "님! 성공적으로 가입되었습니다.'); history.go(-2)</script></body></html>");
 			}else{
 				pw.println ("<html><body><script>");
-				pw.println ("alert('������ ���� ���Կ� �����߽��ϴ�.'); history.go(-2)</script></body></html>");
+				pw.println ("alert('오류로 인해 가입에 실패했습니다.'); history.go(-2)</script></body></html>");
 			}
 			pw.println("</body>");
 			pw.println("</html>");
 		}else {
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter pw = response.getWriter();
-			pw.println ("<html><head><script>alert('��й�ȣ�� ��ġ���� �ʽ��ϴ�.'); history.go(-1);</script></head></html>");
-		}      
+			pw.println ("<html><head><script>alert('비밀번호가 일치하지 않습니다.'); history.go(-1);</script></head></html>");
+		}		
 	}
 }
