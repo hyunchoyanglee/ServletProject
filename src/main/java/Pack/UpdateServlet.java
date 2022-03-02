@@ -8,20 +8,20 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
 public class UpdateServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		// 1. parameter로 전송된 id얻기.
+		// 1. parameter濡� �쟾�넚�맂 id�뼸湲�.
 		//String id=req.getParameter("id");
 		String idx=req.getParameter("idx");
-		// 2. id에 해당하는 정보를 db에서 조회해서 출력.
+		// 2. id�뿉 �빐�떦�븯�뒗 �젙蹂대�� db�뿉�꽌 議고쉶�빐�꽌 異쒕젰.
 		resp.setContentType("text/html;charset=UTF-8");
 		PrintWriter pw = resp.getWriter();
 		pw.println("<html>");
@@ -117,7 +117,7 @@ public class UpdateServlet extends HttpServlet {
 				);
 
 		try{
-			// 2. 전송된 값을 db에 저장.
+			// 2. �쟾�넚�맂 媛믪쓣 db�뿉 ���옣.
 			Class.forName("com.mysql.jdbc.Driver");
 			String url = "jdbc:mysql://13.125.251.30:3307/db01";
 			con = DriverManager.getConnection(url, "lion", "1234");
@@ -129,7 +129,7 @@ public class UpdateServlet extends HttpServlet {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, Integer.parseInt(idx));
 
-			//sql구문 실행하기
+			//sql援щЦ �떎�뻾�븯湲�
 			rs = pstmt.executeQuery();
 			rs.next();
 			String id = rs.getString("id");
@@ -144,22 +144,22 @@ public class UpdateServlet extends HttpServlet {
 			pw.println("<div class=\"wrap\">");
 			pw.println("<form method='post' action='updateok.do'>");
 			pw.println("<div class=\"login\">");
-			pw.println("<h1 class=\"title\">회원정보 수정</h1>");
+			pw.println("<h1 class=\"title\">�쉶�썝�젙蹂� �닔�젙</h1>");
 			pw.println("<input type='hidden' name='idx' value='" + idx2 + "'/>");
 			pw.println("<input type='hidden' name='id' value='" + id + "'/>");
-			pw.println("<div class=\"divtitle\">아이디</div>"
+			pw.println("<div class=\"divtitle\">�븘�씠�뵒</div>"
 					+ "<input type='text' name='id' value='" + id + "' disabled='disabled'/>");
-			pw.println("<div class=\"divtitle\">비밀번호</div>"
+			pw.println("<div class=\"divtitle\">鍮꾨�踰덊샇</div>"
 					+ "<input type='password' name='pwd' value='" + pwd + "'/>");
 			pw.println("<div class=\"divtitle\">Email</div>"
 					+ "<input type='text' name='email' value='" + email + "'/>");
 			pw.println("<div class=\"divtitle\">Phone</div>"
 					+ "<input type='text' name='phone' value='" + phone + "'/><br/>"
-					+ "<div class=\"divtitle\">"+"현재지역 : "+region+"</div>"
-					+ "<h6>"+"지역을 선택한 후 저장해주세요."+"</h6>"
+					+ "<div class=\"divtitle\">"+"�쁽�옱吏��뿭 : "+region+"</div>"
+					+ "<h6>"+"吏��뿭�쓣 �꽑�깮�븳 �썑 ���옣�빐二쇱꽭�슂."+"</h6>"
 					+ "<div class=\"select\">"
 					+ "	<select name=\"region\" id=\"region\">"
-					+ "		<option disabled selected=\"selected\" value=\"0\">"+"선택해주세요"+"</option>"
+					+ "		<option disabled selected=\"selected\" value=\"0\">"+"�꽑�깮�빐二쇱꽭�슂"+"</option>"
 					+ "		<option value=\"1\">Seoul</option>"
 					+ "		<option value=\"2\">Busan</option>"
 					+ " 	<option value=\"3\">Daegu</option>"
@@ -169,7 +169,7 @@ public class UpdateServlet extends HttpServlet {
 					+ "		<option value=\"7\">Jeju</option>"
 					+ "	</select>"
 					+ "</div>");
-			pw.println("<input type='submit' value='저장' class=\"saveBtn\"/><br/>");
+			pw.println("<input type='submit' value='���옣' class=\"saveBtn\"/><br/>");
 			pw.println("</div>");
 			pw.println("</form>");
 			pw.println("</div>");
